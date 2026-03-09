@@ -1,0 +1,7 @@
+
+[project]
+name = "dnnkit"
+version = "0.1.0"
+description = "PyTorch deep learning research toolkit"
+authors = [{name="Festus Slade"}]
+dependencies = ["torch","numpy","pyyaml","tqdm"]
