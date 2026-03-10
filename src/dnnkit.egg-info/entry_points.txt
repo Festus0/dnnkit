@@ -1,0 +1,2 @@
+[console_scripts]
+dnnkit = dnnkit.cli:main
