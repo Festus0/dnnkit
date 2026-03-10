@@ -2,7 +2,6 @@ import argparse
 from dnnkit.train import train
 from dnnkit.leaderboard import save_leaderboard
 from dnnkit.paper import generate_report
-from dnnkit.registry import get_model
 
 
 def main():
@@ -36,10 +35,6 @@ def main():
         save_leaderboard()
     elif args.command == "report":
         generate_report(outputs_dir=args.outputs_dir, output_file=args.output_file)
-
-    # Support for model argument
-    model = get_model(args.model)
-    print(f"Model {args.model} created.")
 
 
 if __name__ == "__main__":
