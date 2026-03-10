@@ -1,0 +1,13 @@
+LICENSE
+README.md
+pyproject.toml
+src/dnnkit/__init__.py
+src/dnnkit/data.py
+src/dnnkit/model.py
+src/dnnkit/train.py
+src/dnnkit.egg-info/PKG-INFO
+src/dnnkit.egg-info/SOURCES.txt
+src/dnnkit.egg-info/dependency_links.txt
+src/dnnkit.egg-info/requires.txt
+src/dnnkit.egg-info/top_level.txt
+tests/test_model.py
