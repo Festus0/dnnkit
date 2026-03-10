@@ -1,5 +1,6 @@
 import os
 import json
+import argparse
 from datetime import datetime
 
 import matplotlib.pyplot as plt
@@ -7,8 +8,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-from dnnkit.model import SimpleNet
-from dnnkit.registry import get_dataset_loaders
+from dnnkit.registry import get_dataset_loaders, get_model
 
 
 def evaluate(model, loader, device):
@@ -27,13 +27,13 @@ def evaluate(model, loader, device):
     return correct / total
 
 
-def train(epochs=3, lr=1e-3, batch_size=64, dataset_name="mnist"):
+def train(epochs=3, lr=1e-3, batch_size=64, dataset_name="mnist", model_name="SimpleNet"):
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print(f"Using device: {device}")
 
     train_loader, test_loader = get_dataset_loaders(dataset_name, batch_size=batch_size)
 
-    model = SimpleNet().to(device)
+    model = get_model(model_name).to(device)
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=lr)
 
@@ -105,4 +105,12 @@ def train(epochs=3, lr=1e-3, batch_size=64, dataset_name="mnist"):
 
 
 if __name__ == "__main__":
-    train()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--epochs", type=int, default=3)
+    parser.add_argument("--lr", type=float, default=1e-3)
+    parser.add_argument("--batch_size", type=int, default=64)
+    parser.add_argument("--dataset", type=str, default="mnist")
+    parser.add_argument("--model", type=str, default="SimpleNet")
+    args = parser.parse_args()
+
+    train(epochs=args.epochs, lr=args.lr, batch_size=args.batch_size, dataset_name=args.dataset, model_name=args.model)
