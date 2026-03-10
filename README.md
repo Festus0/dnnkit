@@ -26,4 +26,4 @@ pip install -e .
 pip install -r requirements-dev.txt
 ## Example Training Curve
 
-![Loss Curve](docs/images/loss_curve.png)
+#![Loss Curve](docs/images/loss_curve.png)
