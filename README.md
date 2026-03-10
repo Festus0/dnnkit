@@ -4,7 +4,7 @@
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.x-red)
 ![License](https://img.shields.io/badge/license-MIT-green)
-
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18945766.svg)](https://doi.org/10.5281/zenodo.18945766)
 **DNNKit** is a lightweight **PyTorch framework for reproducible deep learning experiments**, designed for research workflows.  
 It provides modular components for models, training pipelines, evaluation, and experiment management, making it easier to develop **reproducible machine learning experiments and academic prototypes**.
 
