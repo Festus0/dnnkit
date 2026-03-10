@@ -1,7 +1,0 @@
-torch
-torchvision
-numpy
-pyyaml
-tqdm
-matplotlib
-pandas
