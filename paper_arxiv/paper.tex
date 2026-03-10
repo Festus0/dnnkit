@@ -1,0 +1,223 @@
+\documentclass{article}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\title{DNNKit: A Lightweight Framework for Reproducible Deep Learning Experiments}
+
+\author{
+Festus M. Slade \\
+Cambridge Neuroscience, University of Cambridge, Cambridge CB2 1TN, UK \\
+\texttt{github.com/Festus0/dnnkit}
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Reproducibility and experiment management remain major challenges in modern deep learning research.
+While powerful frameworks such as PyTorch Lightning and HuggingFace Trainer provide extensive tooling,
+their complexity can introduce significant overhead for small-scale research projects, educational settings,
+and rapid experimentation workflows.
+We present \textbf{DNNKit}, a lightweight framework for reproducible deep learning experimentation that integrates
+a command-line training interface, dataset registry, experiment logging, benchmark tracking,
+and automatic report generation.
+DNNKit aims to provide a minimal, transparent infrastructure that simplifies experiment management
+while maintaining compatibility with PyTorch.
+We demonstrate the functionality of the framework using a benchmark experiment on the MNIST handwritten
+digit classification dataset.
+\end{abstract}
+
+\section{Introduction}
+
+Deep learning research often involves large numbers of experiments, parameter configurations,
+datasets, and model variants.
+Managing these experiments in a reproducible and structured way is a persistent challenge.
+
+Common research workflows frequently rely on ad-hoc scripts, notebooks, and manually maintained logs.
+This can make it difficult to reproduce results, compare experiments, or maintain clear experiment provenance.
+
+Several frameworks have been developed to address these issues.
+For example, PyTorch Lightning provides a structured training interface,
+while HuggingFace Trainer focuses on large-scale model training and benchmarking.
+Although these frameworks are powerful, they introduce additional layers of abstraction
+that may be unnecessary for smaller research projects or educational environments.
+
+In this work, we introduce \textbf{DNNKit}, a lightweight experimentation framework designed
+to simplify experiment management while remaining transparent and easy to modify.
+The framework focuses on four core components:
+
+\begin{itemize}
+\item Command-line training interface
+\item Dataset registry
+\item Experiment logging and result storage
+\item Automatic leaderboard and report generation
+\end{itemize}
+
+DNNKit is designed to provide a minimal infrastructure for reproducible experiments
+while remaining fully compatible with PyTorch-based models.
+
+\section{Framework Design}
+
+The design philosophy of DNNKit prioritizes simplicity, transparency, and reproducibility.
+
+\subsection{Training CLI}
+
+The framework provides a command-line interface (CLI) that standardizes experiment execution.
+Training runs can be launched using a simple command:
+
+\begin{verbatim}
+dnnkit train --dataset mnist --epochs 3
+\end{verbatim}
+
+Each training run automatically generates a dedicated experiment directory containing:
+
+\begin{itemize}
+\item model checkpoints
+\item training metrics
+\item configuration parameters
+\end{itemize}
+
+\subsection{Dataset Registry}
+
+Datasets are accessed through a registry mechanism that standardizes data loading.
+This avoids repeated boilerplate code across experiments and ensures consistent dataset usage.
+
+\subsection{Experiment Logging}
+
+All training runs are automatically logged to structured output directories.
+Metrics such as training loss, accuracy, and configuration parameters are stored
+in machine-readable formats.
+
+\subsection{Leaderboard Tracking}
+
+DNNKit aggregates experiment results into a global leaderboard,
+allowing quick comparison across runs.
+
+\subsection{Automatic Report Generation}
+
+The framework can automatically generate experiment reports summarizing results
+and benchmark performance.
+
+\section{Experimental Evaluation}
+
+To demonstrate the functionality of DNNKit,
+we evaluated the framework using the MNIST handwritten digit classification dataset.
+
+\subsection{Dataset}
+
+MNIST consists of 70,000 grayscale images of handwritten digits
+with a resolution of $28 \times 28$ pixels.
+
+\subsection{Model}
+
+We used a simple fully connected neural network consisting of:
+
+\begin{itemize}
+\item Input layer (784 features)
+\item Hidden layer with ReLU activation
+\item Output layer with 10 classes
+\end{itemize}
+
+The model was trained using the Adam optimizer.
+
+\subsection{Training Configuration}
+
+\begin{itemize}
+\item Optimizer: Adam
+\item Learning rate: $1 \times 10^{-3}$
+\item Batch size: 64
+\item Epochs: 3
+\end{itemize}
+
+\section{Results}
+
+Table~\ref{tab:results} summarizes the benchmark results obtained using DNNKit.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ccc}
+\toprule
+Epoch & Training Loss & Test Accuracy \\
+\midrule
+1 & 0.3442 & 94.46\% \\
+2 & 0.1610 & 95.95\% \\
+3 & 0.1110 & 96.97\% \\
+\bottomrule
+\end{tabular}
+\caption{MNIST benchmark results obtained using DNNKit.}
+\label{tab:results}
+\end{table}
+
+The results demonstrate that the framework supports standard deep learning training workflows
+while maintaining a lightweight and transparent architecture.
+
+\section{Discussion}
+
+DNNKit aims to fill the gap between simple research scripts and large training frameworks.
+
+Compared to large frameworks, DNNKit offers several advantages:
+
+\begin{itemize}
+\item minimal abstraction overhead
+\item easy code inspection
+\item fast experiment setup
+\item reproducible experiment tracking
+\end{itemize}
+
+The framework is particularly well suited for:
+
+\begin{itemize}
+\item rapid research prototyping
+\item small-scale machine learning experiments
+\item educational environments
+\end{itemize}
+
+Future development may include additional features such as distributed training support,
+extended dataset registries, and experiment visualization tools.
+
+\section{Conclusion}
+
+We introduced DNNKit, a lightweight framework for reproducible deep learning experiments.
+The framework integrates experiment management, dataset handling, benchmarking,
+and report generation into a simple command-line interface.
+
+Through a benchmark experiment on MNIST, we demonstrated that DNNKit provides
+a practical infrastructure for organizing and reproducing machine learning experiments.
+
+The source code is publicly available at:
+
+\begin{center}
+\url{https://github.com/Festus0/dnnkit}
+\end{center}
+
+\section*{Acknowledgments}
+
+This work was developed as part of independent research into lightweight machine learning
+infrastructure for reproducible experimentation.
+
+\bibliographystyle{unsrt}
+
+\begin{thebibliography}{3}
+
+\bibitem{pytorch}
+Paszke, A. et al.
+PyTorch: An Imperative Style, High-Performance Deep Learning Library.
+NeurIPS (2019).
+
+\bibitem{mnist}
+LeCun, Y. et al.
+Gradient-Based Learning Applied to Document Recognition.
+Proceedings of the IEEE (1998).
+
+\bibitem{lightning}
+Falcon, W.
+PyTorch Lightning.
+GitHub Repository.
+
+\end{thebibliography}
+
+\end{document}

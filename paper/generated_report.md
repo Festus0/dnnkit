@@ -18,6 +18,7 @@ This report summarizes benchmark experiments run with DNNKit.
 |:----------|---------:|------:|-------------:|-------------:|----------------------:|:---------|:------------------------------|
 | mnist     |        3 | 0.001 |           64 |     0.11183  |                0.9697 | cpu      | outputs/mnist_20260310_033745 |
 | mnist     |        3 | 0.001 |           64 |     0.111004 |                0.9697 | cpu      | outputs/mnist_20260310_034234 |
+| mnist     |        1 | 0.001 |           64 |     0.349209 |                0.9468 | cpu      | outputs/mnist_20260310_224022 |
 
 ## Summary
 The best-performing experiment achieved a final test accuracy of
