@@ -13,6 +13,7 @@ def main():
     train_parser.add_argument("--lr", type=float, default=1e-3)
     train_parser.add_argument("--batch-size", type=int, default=64)
     train_parser.add_argument("--dataset", type=str, default="mnist")
+    train_parser.add_argument("--model", type=str, default="mlp")
 
     subparsers.add_parser("leaderboard", help="Build leaderboard from experiment runs")
 
@@ -28,6 +29,7 @@ def main():
             lr=args.lr,
             batch_size=args.batch_size,
             dataset_name=args.dataset,
+            model_name=args.model,
         )
     elif args.command == "leaderboard":
         save_leaderboard()
