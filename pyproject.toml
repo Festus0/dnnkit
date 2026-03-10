@@ -1,7 +1,29 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "dnnkit"
-version = "0.1.0"
+version = "0.2.0"
 description = "PyTorch deep learning research toolkit"
-authors = [{name="Festus Slade"}]
-dependencies = ["torch","numpy","pyyaml","tqdm"]
+authors = [
+  { name = "Festus Slade" }
+]
+dependencies = [
+  "torch",
+  "torchvision",
+  "numpy",
+  "pyyaml",
+  "tqdm",
+  "matplotlib",
+  "pandas"
+]
+
+[project.scripts]
+dnnkit = "dnnkit.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

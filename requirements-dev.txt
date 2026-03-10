@@ -3,3 +3,6 @@ matplotlib
 ruff
 black
 torchvision
+pandas
+tabulate
+jupyter
